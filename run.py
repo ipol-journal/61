@@ -10,9 +10,10 @@ ap = argparse.ArgumentParser()
 ap.add_argument("--denoise", type=int)
 ap.add_argument("--sigma", type=int)
 ap.add_argument("--lambd", type=int) #radio
-ap.add_argument("--lambd_dyn", type=float)
+ap.add_argument("--lambd_dyn", type=str)
 ap.add_argument("--lambd_fix", type=float)
 args = ap.parse_args()
+
 
 #denoise=1 : Guess noise, then denoise
 add_noise = 1 if not args.denoise else 0
