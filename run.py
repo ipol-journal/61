@@ -38,7 +38,7 @@ if args.denoise:
 
     subprocess.run(['imdiff_ipol', 'input_0.png', 'denoised.png', 'diff.png', str(args.sigma)])
 
-else:
+if add_noise:
     #add noise then denoise
     
     #dynamic lambda
