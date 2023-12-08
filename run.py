@@ -57,7 +57,7 @@ else:
         subprocess.run(['imdiff_ipol', 'input_0.png', 'noisy.png', 'diff.png', str(args.sigma)], stdout=file)
 
     with open('rmse_denoised.txt', 'w') as file:           
-        subprocess.run(['imdiff_ipol', 'input_0_sel.png', 'denoised.png', 'diff.png', str(args.sigma)], stdout=file)
+        subprocess.run(['imdiff_ipol', 'input_0.png', 'denoised.png', 'diff.png', str(args.sigma)], stdout=file)
 
 
 # Resize for visualization (always zoom by at least 2x)
