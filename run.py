@@ -9,23 +9,18 @@ import math
 ap = argparse.ArgumentParser()
 ap.add_argument("--denoise", type=int)
 ap.add_argument("--sigma", type=int)
-ap.add_argument("--lambd", type=int) #radio
-ap.add_argument("--lambd_dyn", type=str)
+ap.add_argument("--lambd", type=int)
 ap.add_argument("--lambd_fix", type=float)
 args = ap.parse_args()
 
-
-#denoise=1 : Guess noise, then denoise
-add_noise = 1 if not args.denoise else 0
-lambd_dyn = 1 if not args.lambd else 0
 
 files = ['input_0', 'denoised', 'diff']
 sigmaguessed = 10
 
 #Guess noise then denoise
-if args.denoise: 
+if args.denoise:
     
-    if lambd_dyn:
+    if not args.lambd:
         #dynamic lambda
         option = 3
     else:
@@ -38,11 +33,11 @@ if args.denoise:
 
     subprocess.run(['imdiff_ipol', 'input_0.png', 'denoised.png', 'diff.png', str(args.sigma)])
 
-if add_noise:
-    #add noise then denoise
+#Add noise then denoise
+if not args.denoise: 
     
     #dynamic lambda
-    if lambd_dyn:
+    if not args.lambd:
         option = 1
     else:
         #fixed lambda
